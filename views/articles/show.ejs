@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+        .title {
+            font-size: 2.5em;
+            margin: 0;
+            color: #333;
+        }
+        .date {
+            font-size: 0.9em;
+            color: #888;
+            margin-bottom: 20px;
+        }
+        .button-container {
+            margin-bottom: 20px;
+        }
+        .button-container a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-size: 0.9em;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        .button-container a:hover {
+            background-color: #0056b3;
+        }
+        .button-container .edit-button {
+            background-color: #28a745;
+        }
+        .button-container .edit-button:hover {
+            background-color: #218838;
+        }
+        .subtitle {
+            font-size: 1.5em;
+            color: #555;
+            margin: 20px 0;
+        }
+        .post-paragraph {
+            font-size: 1em;
+            color: #444;
+            line-height: 1.8;
+        }
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2em;
+            }
+            .subtitle {
+                font-size: 1.25em;
+            }
+            .post-paragraph {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            .title {
+                font-size: 1.8em;
+            }
+            .subtitle {
+                font-size: 1.2em;
+            }
+            .post-paragraph {
+                font-size: 0.85em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title"><%=article.title%></h1>
+        <p class="date">Created At : <%=article.createdAt.toLocaleDateString()%></p>
+        <div class="button-container">
+            <a href="/">All Blog</a>
+            <a href="/articles/edit/<%=article.id%>" class="edit-button">Edit</a>
+        </div>
+        <h2 class="subtitle"><%=article.description%></h2>
+        <p class="post-paragraph">
+            <%=article.sanitizedHtml%>
+        </p>
+    </div>
+</body>
+</html>
