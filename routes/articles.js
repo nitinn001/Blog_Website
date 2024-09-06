@@ -1,6 +1,5 @@
 const express = require('express');
 const Article = require("./../models/article");
-const article = require('./../models/article');
 const router = express.Router();
 
 router.get("/new",(req,res)=>{
@@ -41,7 +40,7 @@ function saveArticle(path) {
       article.description = req.body.description
       article.markdown = req.body.markdown
       article.slug = req.body.title
-  
+      console.log(req.body.markdown);
     try{
       article = await article.save();
       res.redirect(`/articles/${article.slug}`)
@@ -51,7 +50,5 @@ function saveArticle(path) {
     }
   }
 }
-
-
 
   module.exports = router;
